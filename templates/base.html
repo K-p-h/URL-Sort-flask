@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Optional: Google Font for modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+      body {
+        background: #f8f9fa;
+        font-family: 'Poppins', sans-serif;
+        color: #212529;
+      }
+
+      /* ✅ Navbar */
+      .navbar {
+        background-color: #ffffff !important;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      }
+
+      .navbar-brand {
+        color: #0d6efd !important;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+
+      .nav-link {
+        color: #333 !important;
+        font-weight: 500;
+        margin-left: 10px;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link:hover {
+        color: #0d6efd !important;
+      }
+
+      /* ✅ Page Container */
+      .main-container {
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 40px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      /* ✅ Buttons */
+      .btn-primary {
+        background-color: #0d6efd;
+        border: none;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background-color: #0b5ed7;
+        transform: translateY(-2px);
+      }
+
+      /* ✅ Alerts */
+      .alert {
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .alert a {
+        color: #004085;
+        font-weight: 500;
+        text-decoration: none;
+      }
+
+      /* ✅ Footer */
+      footer {
+        text-align: center;
+        color: #777;
+        padding: 20px;
+        margin-top: 40px;
+        font-size: 0.9rem;
+      }
+
+      footer p {
+        margin: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ✅ Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="/">🔗 URL Shortener</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            {% if 'user' in session %}
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+            {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/register">Register</a>
+              </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ✅ Main Container -->
+    <div class="container my-5 main-container">
+      {% block content %}{% endblock %}
+    </div>
+
+    <!-- ✅ Footer -->
+    <footer>
+      <p>© {{ current_year or 2025 }} — Built with ❤️ by Parveg</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
